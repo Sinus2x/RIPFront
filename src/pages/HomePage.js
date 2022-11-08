@@ -16,14 +16,12 @@ export function HomePage() {
         <MainPageStyled>
             <ContentStyled>
                 <h1>Apple music albums</h1>
-                <h3>Выберите пластинку</h3>
-                <TableStyled>
+                <h2>Выберите пластинку</h2>
                     <AlbumsStyled>
                         {ALBUMS.map((album) => (
                             <AlbumCard key={album.id} album={album} onClick={() => handleCardClick(album.id)} />
                         ))}
                     </AlbumsStyled>
-                </TableStyled>
             </ContentStyled>
         </MainPageStyled>
     );
