@@ -1,17 +1,18 @@
 import { ALBUMS } from "../constants/albums";
-import React from "react";
+import React, {useContext} from "react";
 import { useParams } from "react-router";
-
+import {AlbumListContext} from "../contexts/AlbumListContext";
 
 export function AlbumPage() {
     const params = useParams();
-
+    const albumContext = useContext(AlbumListContext);
+    console.log(albumContext)
     return (
         <div>
-            <h1>{ALBUMS.find((album) => album.id === Number(params.id))?.title}</h1>
-            <h2>{ALBUMS.find((album) => album.id === Number(params.id))?.artist}</h2>
-            <h3>{ALBUMS.find((album) => album.id === Number(params.id))?.n_songs} песен в альбоме</h3>
-            <p>{ALBUMS.find((album) => album.id === Number(params.id))?.description}</p>
+            <h1>{albumContext.find((album) => album.pk === Number(params.pk))?.title}</h1>
+            <h2>{albumContext.find((album) => album.pk === Number(params.pk))?.artist}</h2>
+            <h3>{albumContext.find((album) => album.pk === Number(params.pk))?.n_songs} песен в альбоме</h3>
+            <p>{albumContext.find((album) => album.pk === Number(params.pk))?.description}</p>
         </div>
     );
 };
