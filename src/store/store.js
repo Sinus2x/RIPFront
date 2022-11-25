@@ -1,22 +1,8 @@
 import {createStore} from "redux";
 
-export const actionCashAlbumList = (data) => {
-    return {
-        type: 'CASH ALBUM LIST',
-        payload: data
-    }
-}
-
-export const actionCashAlbum = (data) => {
-    return {
-        type: 'CASH ALBUM',
-        payload: data
-    }
-}
-
 const defaultState = {
     albumList: [],
-    currentAlbum: {}
+    currentAlbum: undefined
 }
 
 const reducer = (state = defaultState, action) => {

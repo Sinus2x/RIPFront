@@ -3,7 +3,7 @@ import { useParams } from "react-router";
 
 import {getAlbum} from "../api/api";
 import {useDispatch, useSelector} from "react-redux";
-import {actionCashAlbum} from "../store/store";
+import {actionCashAlbum} from "../store/actions";
 
 export function AlbumPage() {
     const params = useParams();

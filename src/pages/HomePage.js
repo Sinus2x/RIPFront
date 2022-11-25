@@ -1,11 +1,11 @@
 import { AlbumCard } from "../components/AlbumCard";
 import React, {useCallback, useEffect, useState} from "react";
 import { useNavigate } from "react-router";
-import {MainPageStyled, ContentStyled, TableStyled, AlbumsStyled} from "./HomePageStyle";
+import {MainPageStyled, ContentStyled, AlbumsStyled} from "./HomePageStyle";
 
 import {getAlbums} from "../api/api";
 import {useDispatch, useSelector} from "react-redux";
-import {actionCashAlbumList} from "../store/store";
+import {actionCashAlbumList} from "../store/actions";
 
 export function HomePage() {
     const navigate = useNavigate();
