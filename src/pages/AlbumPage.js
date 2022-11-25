@@ -1,16 +1,18 @@
 import React, {useEffect, useState} from "react";
 import { useParams } from "react-router";
-import {AlbumListContext} from "../contexts/AlbumListContext";
 
 import {getAlbum} from "../api/api";
+import {useDispatch, useSelector} from "react-redux";
+import {actionCashAlbum} from "../store/store";
 
 export function AlbumPage() {
     const params = useParams();
-    const [album, setAlbum] = useState();
+    const dispatch = useDispatch();
+    const album = useSelector(state => state.currentAlbum)
 
     useEffect(()=>{
         getAlbum(Number(params.id)).then(
-            (data) => {setAlbum(data)}
+            (data) => {dispatch(actionCashAlbum(data))}
         )},[]
     )
     return (

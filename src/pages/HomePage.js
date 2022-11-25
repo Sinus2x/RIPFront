@@ -2,12 +2,12 @@ import { AlbumCard } from "../components/AlbumCard";
 import React, {useCallback, useEffect, useState} from "react";
 import { useNavigate } from "react-router";
 import {MainPageStyled, ContentStyled, TableStyled, AlbumsStyled} from "./HomePageStyle";
-import {AlbumListContext} from '../contexts/AlbumListContext';
 
 import {getAlbums} from "../api/api";
+import {useDispatch, useSelector} from "react-redux";
+import {actionCashAlbumList} from "../store/store";
 
 export function HomePage() {
-    const [albumList, setAlbumList] = useState([]);
     const navigate = useNavigate();
     const handleCardClick = useCallback(
         (id) => {
@@ -16,8 +16,11 @@ export function HomePage() {
         [navigate]
     );
 
+    const dispatch = useDispatch();
+    const albumList = useSelector(state => state.albumList)
+
     useEffect(()=>{
-        getAlbums().then((data)=>{setAlbumList((data))});
+        getAlbums().then((data) => {dispatch(actionCashAlbumList(data))});
     },[])
 
     return (
