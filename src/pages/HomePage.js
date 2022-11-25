@@ -1,20 +1,10 @@
 import { AlbumCard } from "../components/AlbumCard";
-import { ALBUMS } from "../constants/albums";
-import React, {useCallback, useContext, useEffect, useState} from "react";
+import React, {useCallback, useEffect, useState} from "react";
 import { useNavigate } from "react-router";
 import {MainPageStyled, ContentStyled, TableStyled, AlbumsStyled} from "./HomePageStyle";
 import {AlbumListContext} from '../contexts/AlbumListContext';
 
-const getAlbums = async () =>{
-    const res = await fetch(`http://127.0.0.1:8000/albums`)
-        .then((response) => {
-            return response.json();
-        }).catch(()=>{
-            return {resultCount:0, results:[]}
-        })
-    return res
-}
-
+import {getAlbums} from "../api/api";
 
 export function HomePage() {
     const [albumList, setAlbumList] = useState([]);
@@ -31,7 +21,6 @@ export function HomePage() {
     },[])
 
     return (
-        <AlbumListContext.Provider value={albumList}>
             <MainPageStyled>
                 <ContentStyled>
                     <h1>Apple music albums</h1>
@@ -43,6 +32,5 @@ export function HomePage() {
                         </AlbumsStyled>
                 </ContentStyled>
             </MainPageStyled>
-        </AlbumListContext.Provider>
     );
 };
