@@ -3,6 +3,7 @@ import React, {useCallback, useEffect, useState} from "react";
 import { useNavigate } from "react-router";
 import {MainPageStyled, ContentStyled, AlbumsStyled} from "./HomePageStyle";
 
+// redux
 import {getAlbums} from "../api/api";
 import {useDispatch, useSelector} from "react-redux";
 import {actionCashAlbumList} from "../store/actions";
