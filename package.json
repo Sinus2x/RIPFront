@@ -57,6 +57,5 @@
     },
     "devDependencies": {
         "@types/styled-components": "^5.1.26"
-    },
-    "proxy": "http://127.0.0.1:8000"
+    }
 }
