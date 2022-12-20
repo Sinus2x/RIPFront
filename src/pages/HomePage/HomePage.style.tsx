@@ -41,6 +41,12 @@ export const ProductsStyled = styled.div`
     & > * {
         width: calc(100% / 4 - 12px);
     }
+
+    @media (max-width: 768px) {
+        & > * {
+            width: 100%;
+        }
+    }
 `;
 
 export const TableStyled = styled.div`
@@ -49,6 +55,10 @@ export const TableStyled = styled.div`
     width: 100%;
     margin-top: 60px;
     overflow: visible;
+
+    @media (max-width: 1250px) {
+        flex-direction: column;
+    }
 `;
 
 export const NothingStyled = styled.div`

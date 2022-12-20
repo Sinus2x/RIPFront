@@ -8,6 +8,10 @@ export const CartPageStyled = styled.div`
     min-height: 100vh;
     gap: 32px;
     padding-bottom: 60px;
+
+    @media (max-width: 768px) {
+        flex-direction: column;
+    }
 `;
 
 export const NothingStyled = styled.div`
@@ -45,6 +49,10 @@ export const ProductsBlockStyled = styled.div`
     display: flex;
     flex-direction: column;
     gap: 16px;
+
+    @media (max-width: 768px) {
+        width: 100%;
+    }
 `;
 
 export const ResultBlockStyled = styled.div`

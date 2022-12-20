@@ -15,7 +15,7 @@ axios.defaults.xsrfHeaderName = "X-CSRFTOKEN";
 axios.defaults.xsrfCookieName = "csrftoken";
 
 const baseConfig: AxiosRequestConfig = {
-    baseURL: 'http://localhost:8000', // <--- Add your base url
+    baseURL: "http://localhost:8000", // <--- Add your base url
     headers: {
         "Content-Type": "application/json-patch+json",
     },
