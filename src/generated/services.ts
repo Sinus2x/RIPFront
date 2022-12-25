@@ -12,8 +12,6 @@ import { Http } from "./httpRequest";
 import qs from "qs";
 import type {
     GetCartQueryParams,
-    GetOrderQueryParams,
-    GetOrderGet_ordersQueryParams,
     Cart,
     Login,
     Order,
@@ -150,22 +148,28 @@ export const getCartId = (
 getCartId.key = "/cart/{id}/";
 
 export const getOrder = (
-    queryParams?: GetOrderQueryParams,
+    queryParams?: string,
     configOverride?: AxiosRequestConfig
 ): Promise<SwaggerResponse<Order[]>> => {
-    return Http.getRequest(getOrder.key, queryParams, undefined, undefined, overrideConfig(_CONSTANT0, configOverride));
+    return Http.getRequest(
+        `${getOrder.key}${queryParams}`,
+        "",
+        undefined,
+        undefined,
+        overrideConfig(_CONSTANT0, configOverride)
+    );
 };
 
 /** Key is end point string without base url */
 getOrder.key = "/order/";
 
 export const getOrderGet_orders = (
-    queryParams?: GetOrderGet_ordersQueryParams,
+    queryParams?: string,
     configOverride?: AxiosRequestConfig
-): Promise<SwaggerResponse<Order>> => {
+): Promise<SwaggerResponse<Order[]>> => {
     return Http.getRequest(
-        getOrderGet_orders.key,
-        queryParams,
+        `${getOrderGet_orders.key}${queryParams}`,
+        "",
         undefined,
         undefined,
         overrideConfig(_CONSTANT0, configOverride)
@@ -232,7 +236,7 @@ export const getProductsId = (
 getProductsId.key = "/products/{id}/";
 
 export const getUser = (configOverride?: AxiosRequestConfig): Promise<SwaggerResponse<User>> => {
-    return Http.getRequest(getUser.key, undefined, undefined, _CONSTANT1, overrideConfig(_CONSTANT0, configOverride));
+    return Http.getRequest(getUser.key, undefined, undefined, undefined, overrideConfig(_CONSTANT0, configOverride));
 };
 
 /** Key is end point string without base url */
@@ -288,7 +292,7 @@ export const patchUser = (
         patchUser.key,
         undefined,
         requestBody,
-        _CONSTANT1,
+        undefined,
         overrideConfig(_CONSTANT0, configOverride)
     );
 };
@@ -338,14 +342,11 @@ export const postOrder = (requestBody: Order, configOverride?: AxiosRequestConfi
 /** Key is end point string without base url */
 postOrder.key = "/order/";
 
-export const postOrderCreate_new_order = (
-    requestBody?: Order,
-    configOverride?: AxiosRequestConfig
-): Promise<SwaggerResponse<Order>> => {
+export const postOrderCreate_new_order = (configOverride?: AxiosRequestConfig): Promise<SwaggerResponse<Order>> => {
     return Http.postRequest(
         postOrderCreate_new_order.key,
         undefined,
-        requestBody,
+        undefined,
         undefined,
         overrideConfig(_CONSTANT0, configOverride)
     );
@@ -354,10 +355,31 @@ export const postOrderCreate_new_order = (
 /** Key is end point string without base url */
 postOrderCreate_new_order.key = "/order/create_new_order/";
 
+export const postOrderIdChange_status = (
+    /**
+     *
+     * A unique integer value identifying this order.
+     */
+    id: number,
+    requestBody: Order,
+    configOverride?: AxiosRequestConfig
+): Promise<SwaggerResponse<Order>> => {
+    return Http.postRequest(
+        template(postOrderIdChange_status.key, { id }),
+        undefined,
+        requestBody,
+        undefined,
+        overrideConfig(_CONSTANT0, configOverride)
+    );
+};
+
+/** Key is end point string without base url */
+postOrderIdChange_status.key = "/order/{id}/change_status/";
+
 export const postProducts = (
     requestBody: Partial<Product>,
     configOverride?: AxiosRequestConfig
-): Promise<SwaggerResponse<Product>> => {
+): Promise<SwaggerResponse<any>> => {
     return Http.postRequest(
         postProducts.key,
         undefined,
@@ -450,7 +472,7 @@ export const putProductsId = (
 putProductsId.key = "/products/{id}/";
 
 export const putUser = (requestBody: User, configOverride?: AxiosRequestConfig): Promise<SwaggerResponse<User>> => {
-    return Http.putRequest(putUser.key, undefined, requestBody, _CONSTANT1, overrideConfig(_CONSTANT0, configOverride));
+    return Http.putRequest(putUser.key, undefined, requestBody, undefined, overrideConfig(_CONSTANT0, configOverride));
 };
 
 /** Key is end point string without base url */

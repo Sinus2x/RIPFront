@@ -6,7 +6,6 @@
  */
 import axios from "axios";
 import Axios, { AxiosRequestConfig, AxiosError, AxiosResponse, AxiosInstance } from "axios";
-import { BACKEND_URL } from "config";
 //@ts-ignore
 import qs from "qs";
 

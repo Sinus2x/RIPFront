@@ -1,8 +1,9 @@
 import { TypedUseSelectorHook, useDispatch, useSelector } from "react-redux";
 import { Action, configureStore, ThunkAction } from "@reduxjs/toolkit";
 import { productReducer } from "./products/products.reducer";
-import { authReducer } from "./auth/auth.reducer";
-import { cartReducer } from "./cart/cart.reducer";
+import { orderReducer } from "store/order";
+import { authReducer } from "store/auth";
+import { cartReducer } from "store/cart";
 
 export const makeStore = () =>
     configureStore({
@@ -10,6 +11,7 @@ export const makeStore = () =>
             product: productReducer,
             auth: authReducer,
             cart: cartReducer,
+            order: orderReducer,
         },
     });
 
