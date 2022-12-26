@@ -8,6 +8,7 @@ import { Route, Routes } from "react-router";
 import { useAppDispatch } from "store";
 import { getUserAction } from "store/auth/auth.actions";
 import { getCartAction } from "store/cart/cart.actions";
+import { OrderPage } from "pages/OrderPage";
 
 export const App = () => {
     const dispatch = useAppDispatch();
@@ -24,6 +25,7 @@ export const App = () => {
                 <Route path="/auth" element={<AuthPage />} />
                 <Route path="/user" element={<UserPage />} />
                 <Route path="/cart" element={<CartPage />} />
+                <Route path="/order" element={<OrderPage />} />
                 <Route path="*" element={<h1>NOT FOUND!</h1>} />
             </Routes>
         </div>

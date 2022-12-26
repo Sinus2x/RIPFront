@@ -10,6 +10,8 @@ export const getPageTitle = (path: string) => {
             return "Личный кабинет";
         case path.includes("cart"):
             return "Корзина";
+        case path.includes("order"):
+            return "Заказы";
         default:
             return "Главная";
     }

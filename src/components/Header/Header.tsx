@@ -39,22 +39,27 @@ export const Header = (props: HeaderProps) => {
                     <FaRecordVinylStyled size={40} />
                 </Link>
                 <h2>{getPageTitle(location.pathname)}</h2>
-                {isAuth ? (
-                    <div>
-                        <CartStyled onClick={handleCartClick}>
-                            {!!cartLength && <LengthStyled>{cartLength}</LengthStyled>}
+                <div>
+                    <Link to="/order">
+                        <span className="material-symbols-outlined">order_approve</span>
+                    </Link>
+                    {isAuth ? (
+                        <>
+                            <CartStyled onClick={handleCartClick}>
+                                {!!cartLength && <LengthStyled>{cartLength}</LengthStyled>}
 
-                            <CartIconStyled className="material-symbols-outlined">shopping_cart</CartIconStyled>
-                        </CartStyled>
-                        <span className="material-symbols-outlined" onClick={handleUserClick}>
-                            account_circle
-                        </span>
-                    </div>
-                ) : (
-                    <Button onClick={handleButtonClick} rounded>
-                        Войти
-                    </Button>
-                )}
+                                <CartIconStyled className="material-symbols-outlined">shopping_cart</CartIconStyled>
+                            </CartStyled>
+                            <span className="material-symbols-outlined" onClick={handleUserClick}>
+                                account_circle
+                            </span>
+                        </>
+                    ) : (
+                        <Button onClick={handleButtonClick} rounded>
+                            Войти
+                        </Button>
+                    )}
+                </div>
             </ContainerStyled>
         </HeaderStyled>
     );

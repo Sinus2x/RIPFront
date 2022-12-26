@@ -6,9 +6,9 @@
  */
 
 export interface Cart {
-    id?: number;
+    id: number;
     products: Product[];
-    user?: User;
+    user: User;
 }
 
 export interface GetCartQueryParams {
@@ -60,7 +60,7 @@ export interface GetProductsQueryParams {
      * Which field to use when ordering the results.
      */
     ordering?: string;
-    price?: string;
+    price?: number;
     /**
      *
      * A search term.
@@ -101,24 +101,46 @@ export interface Login {
 }
 
 export interface Order {
-    id: number;
-    products: Product[];
-    user: User;
+    id?: number;
+    products?: Product[];
+    user?: User;
     /**
      *
-     * - Format: date
+     * - Format: date-time
      */
-    date?: string;
+    approval_date?: string;
+    /**
+     *
+     * - Format: date-time
+     */
+    order_date?: string;
+    /**
+     *
+     * - Format: date-time
+     */
+    pickup_date?: string;
+    status: StatusEnum | BlankEnum;
 }
 
 export interface PatchedOrder {
     /**
      *
-     * - Format: date
+     * - Format: date-time
      */
-    date?: string;
+    approval_date?: string;
     id?: number;
+    /**
+     *
+     * - Format: date-time
+     */
+    order_date?: string;
+    /**
+     *
+     * - Format: date-time
+     */
+    pickup_date?: string;
     products?: Product[];
+    status?: StatusEnum | BlankEnum;
     user?: User;
 }
 
@@ -136,7 +158,8 @@ export interface PatchedProduct {
     name?: string;
     /**
      *
-     * - maxLength: 100
+     * - minimum: -2147483648
+     * - max: 2147483647
      */
     price?: string;
     /**
@@ -192,7 +215,7 @@ export interface Product {
      *
      * - maxLength: 100
      */
-    name?: string;
+    name: string;
     /**
      *
      * - maxLength: 100
@@ -200,7 +223,8 @@ export interface Product {
     brand?: string;
     /**
      *
-     * - maxLength: 100
+     * - minimum: -2147483648
+     * - max: 2147483647
      */
     price?: string;
     /**
@@ -257,6 +281,13 @@ export interface Registration {
     is_superuser?: boolean;
 }
 
+export enum StatusEnum {
+    ordered = "ordered",
+    approved = "approved",
+    picked_up = "picked_up",
+    rejected = "rejected",
+}
+
 /**
  *
  * Осуществляет сериализацию и десериализацию объектов User.
@@ -289,4 +320,8 @@ export interface User {
      * Designates that this user has all permissions without explicitly assigning them.
      */
     is_superuser?: boolean;
+}
+
+export interface ValidationError {
+    status: string;
 }
